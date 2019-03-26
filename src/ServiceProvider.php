@@ -20,17 +20,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot(): void
     {
-        //发布配置文件到项目的 config 目录中
-        $this->publishes([
-            __DIR__ . '/config/coffey.php' => config_path('coffey.php'),
-        ]);
-        $this->loadRoutesFrom(__DIR__.'/routes.php');
 
-        $this->loadMigrationsFrom(__DIR__.'/migrations');
+        if ($this->app->runningInConsole()) {
 
-        $this->loadViewsFrom(__DIR__.'/resources/views');
-
-
+            $this->publishes([
+                __DIR__.'/../config/coffey.php' => config_path('coffey.php'),
+            ], 'config');
+            $this->loadRoutesFrom(__DIR__.'/routes.php');
+            $this->loadMigrationsFrom(__DIR__.'/migrations');
+            $this->loadViewsFrom(__DIR__.'/resources/views');
+        }
     }
 
     /**
