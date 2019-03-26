@@ -1,0 +1,24 @@
+{
+    "name": "coffey\/weather",
+    "description": "A Test Admin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "coffey",
+            "email": "coffey@nligo.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Coffey\\Weather\\": "src"
+        }
+    },
+    "extra": {
+    "laravel": {
+        "providers": [
+            "Coffey\\Weather\\ServiceProvider"
+        ]
+    }
+}
+}
