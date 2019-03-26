@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,7 +10,5 @@
 |
 */
 
-Route::namespace('Coffey\Weather')->group(function () {
-    //用户登陆/登出
-    Route::any('/test', 'UserController@index')->name('coffey.user.index');
-});
+Route::get('test',array('uses' => 'Coffey\Weather\Http\Controllers\UserController@index'));
+

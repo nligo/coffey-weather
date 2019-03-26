@@ -11,7 +11,6 @@ namespace Coffey\Weather;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-    protected $defer = true;
 
     /**
      * 服务引导方法
@@ -20,16 +19,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot(): void
     {
-
-        if ($this->app->runningInConsole()) {
-
-            $this->publishes([
-                __DIR__.'/../config/coffey.php' => config_path('coffey.php'),
-            ], 'config');
-            $this->loadRoutesFrom(__DIR__.'/routes/route.php');
-            $this->loadMigrationsFrom(__DIR__.'/migrations');
-            $this->loadViewsFrom(__DIR__.'/resources/views');
-        }
+        $this->publishes([
+            __DIR__.'/../config/coffey.php' => config_path('coffey.php'),
+        ], 'config');
+        $this->loadRoutesFrom(__DIR__.'/../routes/route.php');
+        $this->loadMigrationsFrom(__DIR__.'/../migrations');
+        $this->loadViewsFrom(__DIR__.'/../resources/views','coffey');
     }
 
     /**
@@ -40,7 +35,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/config/coffey.php', 'coffey'
+            __DIR__.'/../config/coffey.php', 'coffey'
         );
     }
 
