@@ -1,6 +1,6 @@
 <?php
 
-namespace Coffey\Http\Controllers;
+namespace Coffey\Weather\Http\Controllers;
 
 use Illuminate\Http\Request;
 
